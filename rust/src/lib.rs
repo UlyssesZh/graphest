@@ -1,5 +1,5 @@
-#![allow(clippy::float_cmp)]
-#![feature(box_patterns)]
+#![allow(clippy::approx_constant, clippy::float_cmp)]
+#![feature(deref_patterns)]
 
 pub use crate::{
     fftw::FftImage,

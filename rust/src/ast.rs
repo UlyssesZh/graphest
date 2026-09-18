@@ -187,7 +187,7 @@ pub struct Expr {
 macro_rules! binary {
     ($op:pat, $x:pat, $y:pat) => {
         $crate::ast::Expr {
-            kind: $crate::ast::ExprKind::Binary($op, box $x, box $y),
+            kind: $crate::ast::ExprKind::Binary($op, deref!($x), deref!($y)),
             ..
         }
     };
@@ -209,7 +209,7 @@ macro_rules! bool_constant {
 macro_rules! constant {
     ($a:pat) => {
         $crate::ast::Expr {
-            kind: $crate::ast::ExprKind::Constant(box $a),
+            kind: $crate::ast::ExprKind::Constant(deref!($a)),
             ..
         }
     };
@@ -242,7 +242,7 @@ macro_rules! nary {
 macro_rules! pown {
     ($x:pat, $n:pat) => {
         $crate::ast::Expr {
-            kind: $crate::ast::ExprKind::Pown(box $x, $n),
+            kind: $crate::ast::ExprKind::Pown(deref!($x), $n),
             ..
         }
     };
@@ -253,7 +253,7 @@ macro_rules! pown {
 macro_rules! rootn {
     ($x:pat, $n:pat) => {
         $crate::ast::Expr {
-            kind: $crate::ast::ExprKind::Rootn(box $x, $n),
+            kind: $crate::ast::ExprKind::Rootn(deref!($x), $n),
             ..
         }
     };
@@ -264,7 +264,7 @@ macro_rules! rootn {
 macro_rules! ternary {
     ($op:pat, $x:pat, $y:pat, $z:pat) => {
         $crate::ast::Expr {
-            kind: $crate::ast::ExprKind::Ternary($op, box $x, box $y, box $z),
+            kind: $crate::ast::ExprKind::Ternary($op, deref!($x), deref!($y), deref!($z)),
             ..
         }
     };
@@ -275,7 +275,7 @@ macro_rules! ternary {
 macro_rules! unary {
     ($op:pat, $x:pat) => {
         $crate::ast::Expr {
-            kind: $crate::ast::ExprKind::Unary($op, box $x),
+            kind: $crate::ast::ExprKind::Unary($op, deref!($x)),
             ..
         }
     };
